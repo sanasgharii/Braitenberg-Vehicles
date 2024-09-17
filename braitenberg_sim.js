@@ -594,16 +594,14 @@ function loadVehicle() {
     break;
 
   case 2: //Love
-    simulationInfo.bayVehicle.vehicle.baseValues = {left: 1, right: 1, bulb: 0};
-    simulationInfo.bayVehicle.vehicle.sensors = [{position: -Math.PI/4, type: "left", strength: 1}, {position: Math.PI/4, type: "right", strength: 1}];
+    simulationInfo.bayVehicle.vehicle.baseValues = {left: 5, right: 5, bulb: 0};
+    simulationInfo.bayVehicle.vehicle.sensors = [{position: -Math.PI/4, type: "left", strength: -0.5}, {position: Math.PI/4, type: "right", strength: -0.5}];
     break;
 
   case 3: //Exploration
-    simulationInfo.bayVehicle.vehicle.baseValues = {left: 1, right: 1, bulb: 0};
-    simulationInfo.bayVehicle.vehicle.sensors = [{position: -Math.PI/4, type: "right", strength: 1}, {position: Math.PI/4, type: "left", strength: 1}];
+    simulationInfo.bayVehicle.vehicle.baseValues = {left: 5, right: 5, bulb: 0};
+    simulationInfo.bayVehicle.vehicle.sensors = [{position: -Math.PI/4, type: "right", strength: -0.5}, {position: Math.PI/4, type: "left", strength: -0.5}];
     break;
-
-
     
   default:
     for (i = 0; i < braitenbergInfo.vehicles.length; ++i) {
