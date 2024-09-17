@@ -1,0 +1,74 @@
+<!--
+Copyright 2016 Harmen de Weerd
+Copyright 2017 George Kachergis, James Cooke, Johannes Keyser
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Braitenberg Vehicles</title>
+    <script language="JavaScript" src="mouse.js"></script>
+    <script language="JavaScript" src="graphics.js"></script>
+    <script language="JavaScript" src="braitenberg_sim.js"></script>
+  </head>
+  <body onload="init();">
+    <table border="0">
+      <tbody><tr><td colspan="3">
+        <canvas id="arenaBraitenberg" width="625" height="400" style="cursor: initial;"></canvas>
+      </td></tr><tr>
+        <th colspan="2">Environment</th><td></td></tr>
+        <tr><td>Number of lightbulbs: <span id="bulbLabel">2</span></td><td align="right"><input id="bulbDial" min="0" max="3" value="1" oninput="setBulbNumber(this.value);" type="range"></td><td style="width:180px;"></td></tr>
+        <tr><td>Number of vehicles: <span id="vehicleLabel">1</span></td><td align="right"><input id="vehicleDial" min="1" max="4" value="1" oninput="setVehicleNumber(this.value);" type="range"></td><td style="width:180px;"></td></tr>
+        <tr><td></td><th colspan="2">Vehicle</th></tr>
+        <tr><td rowspan="7" align="center"><canvas id="bayBraitenberg" width="110" height="110" style="border:solid 2px black;"></canvas></td>
+          <td>Load one of the basic Braitenberg vehicles.</td><td align="right"><select id="vehicleSelectBox">
+            <option selected="selected">A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+            <!--<option>Custom</option>-->
+          </select>
+          <input value="Load" onclick="javascript:loadVehicle();" type="button">
+          </td></tr>
+        <tr style="visibility:hidden;"><td>Default speed of left motor: <span id="leftMotorLabel">1</span></td><td align="right"><input id="leftMotorDial" min="-50" max="50" value="10" oninput="setLeftMotorValue(this.value);" type="range"></td></tr>
+        <tr style="visibility:hidden;"><td>Default speed of right motor: <span id="rightMotorLabel">1</span></td><td align="right"><input id="rightMotorDial" min="-50" max="50" value="10" oninput="setRightMotorValue(this.value);" type="range"></td></tr>
+        <tr style="visibility:hidden;"><td>Default illumination of lightbulb: <span id="lightBulbLabel">0</span></td><td align="right"><input id="lightBulbDial" min="0" max="100" value="0" oninput="setLightBulbValue(this.value);" type="range"></td></tr>
+        <tr style="visibility:hidden;"><th colspan="2">Vehicle sensors</th></tr>
+        <tr><td style="visibility:hidden;">
+          Number of sensors on vehicle: <span id="sensorLabel">2</span>
+        </td>
+        <td align="right" style="visibility:hidden;">
+          <input id="sensorDial" min="1" max="8" value="2" oninput="setSensorNumber(this.value);" type="range">
+        </td></tr>
+        <tr>
+          <td style="visibility:hidden;">
+            Selected <select id="sensorTypeSelect" onchange="javascript:changeMotor(this.selectedIndex);">
+            <option>left motor</option>
+            <option selected="selected">right motor</option>
+            <option>lightbulb</option>
+            </select>
+            sensor strength: <span id="sensorStrengthLabel">1</span>
+          </td>
+          <td align="right" style="visibility:hidden;">
+            <input id="sensorStrengthDial" min="-50" max="50" value="10" oninput="setSensorStrength(this.value);" type="range">
+          </td>
+        </tr>
+        <tr><td colspan="3" align="center"><input id="startButton" value="Pause simulation" onclick="javascript:toggleSimulation();" type="button">
+          <input id="startButton" value="Save simulation setup" onclick="javascript:saveSetup();" type="button">
+          <input id="startButton" value="Load simulation setup" onclick="javascript:loadInfo();" type="button"></td></tr>
+      </tbody></table>
+  </body>
+</html>
